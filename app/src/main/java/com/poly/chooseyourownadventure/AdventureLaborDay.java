@@ -190,7 +190,7 @@ public class AdventureLaborDay extends AppCompatActivity {
 
         tvStoryText.setText("For how long?");
 
-        ivStory.setImageResource(R.drawable.im_beach);
+        ivStory.setImageResource(R.drawable.im_arrive_at_beach);
 
         setAllBtnsVisible();
         btn1.setText("20 minutes");
@@ -342,6 +342,8 @@ public class AdventureLaborDay extends AppCompatActivity {
         isWon = false;
         tvStoryText.setText("The baby cries, your team loses from distraction. Game over.");
 
+        ivStory.setImageResource(R.drawable.im_baby_lose_game);
+
 
         setAllBtnsVisible();
         btn1.setText("Next");
@@ -420,6 +422,8 @@ public class AdventureLaborDay extends AppCompatActivity {
         if (isWon)
         {
             tvStoryText.setText("Its a labor day miracle! You get to live the whole day over again!");
+
+            ivStory.setImageResource(R.drawable.im_miracle);
         }
         else
         {
@@ -441,6 +445,8 @@ public class AdventureLaborDay extends AppCompatActivity {
         else
         {
             tvStoryText.setText("High school is over. Permenant Game over.");
+
+            ivStory.setImageResource(R.drawable.im_high_school_over);
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
