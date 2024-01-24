@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_labor_day);
 
-        Intent intent = new Intent(MainActivity.this, AdventureLaborDay.class);
+        Intent intent = new Intent(MainActivity.this, RpgHotDogEatingContest.class);
 
         startActivity(intent);
     }

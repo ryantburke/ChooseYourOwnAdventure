@@ -1,5 +1,6 @@
 package com.poly.chooseyourownadventure;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class AdventureLaborDay extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_labor_day);
 
         tvStoryTitle = findViewById(R.id.tv_title1);
         tvOptionTitle = findViewById(R.id.tv_title2);
@@ -34,13 +35,7 @@ public class AdventureLaborDay extends AppCompatActivity {
         start();
     }
 
-    private void setAllBtnsVisible()
-    {
-        btn1.setVisibility(View.VISIBLE);
-        btn2.setVisibility(View.VISIBLE);
-        btn3.setVisibility(View.VISIBLE);
-        btn4.setVisibility(View.VISIBLE);
-    }
+
 
 
     public void start()
@@ -81,6 +76,28 @@ public class AdventureLaborDay extends AppCompatActivity {
         });
 
 
+    }
+
+    private void playAudio(int audioId) {
+        MediaPlayer mp = MediaPlayer.create(this, audioId);
+        mp.start();
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+                mp = null;
+            }
+        });
+    }
+
+    private void setAllBtnsVisible()
+    {
+        playAudio(R.raw.audio_bass);
+        btn1.setVisibility(View.VISIBLE);
+        btn2.setVisibility(View.VISIBLE);
+        btn3.setVisibility(View.VISIBLE);
+        btn4.setVisibility(View.VISIBLE);
     }
 
     //________BEACH PATH________
