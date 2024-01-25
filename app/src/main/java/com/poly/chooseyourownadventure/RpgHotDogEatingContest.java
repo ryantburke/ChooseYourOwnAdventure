@@ -125,7 +125,7 @@ public class RpgHotDogEatingContest extends AppCompatActivity {
             public void onClick(View v) {
 
                 int guess = Integer.parseInt(editText.getText().toString());
-                int maxCaloriesConsumed = 2000 + (int) (125 * (Math.sin(guess / Math.PI) + 1));
+                int maxCaloriesConsumed = 2500 + (int) (1000 * (Math.sin(guess * Math.PI/4 ) + 1));
                 player.setMaxCaloriesConsumed(maxCaloriesConsumed);
 
                 tvMain.setText("Alright, lets see if you can do it!");
@@ -217,6 +217,67 @@ public class RpgHotDogEatingContest extends AppCompatActivity {
      */
     private void endOfContest()
     {
+        setContentView(R.layout.activity_hot_dog_contest_end);
+        ImageView[] ivHotDogs = new ImageView[12];
+        ivHotDogs[0] = findViewById(R.id.im_hd1);
+        ivHotDogs[1] = findViewById(R.id.im_hd2);
+        ivHotDogs[2] = findViewById(R.id.im_hd3);
+        ivHotDogs[3] = findViewById(R.id.im_hd4);
+        ivHotDogs[4] = findViewById(R.id.im_hd5);
+        ivHotDogs[5] = findViewById(R.id.im_hd6);
+        ivHotDogs[6] = findViewById(R.id.im_hd7);
+        ivHotDogs[7] = findViewById(R.id.im_hd8);
+        ivHotDogs[8] = findViewById(R.id.im_hd9);
+        ivHotDogs[9] = findViewById(R.id.im_hd10);
+        ivHotDogs[10] = findViewById(R.id.im_hd11);
+        ivHotDogs[11] = findViewById(R.id.im_hd12);
+
+        TextView tvYouAte, tvHotDogs, tvOhNo, tvLoseCondition;
+        tvYouAte = findViewById(R.id.tv_you_ate);
+        tvHotDogs = findViewById(R.id.tv_hot_dogs);
+        tvOhNo = findViewById(R.id.tv_oh_no);
+        tvLoseCondition = findViewById(R.id.tv_lose_condition);
+
+        Button btnNext = findViewById(R.id.btn_next);
+
+        //turn off hot dogs
+        for (ImageView img:ivHotDogs) {
+            img.setVisibility(View.INVISIBLE);
+            img.setImageResource(R.drawable.im_hot_dog);
+        }
+        tvYouAte.setVisibility(View.INVISIBLE);
+        tvHotDogs.setVisibility(View.INVISIBLE);
+        if(player.getCaloriesConsumed() >= player.getMaxCaloriesConsumed()) {
+            tvLoseCondition.setText("YOU ARE FULL");
+        }
+        else {
+            tvLoseCondition.setText("YOUR MOUTH IS TOO DRY");
+        }
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tvOhNo.setVisibility(View.INVISIBLE);
+                tvLoseCondition.setVisibility(View.INVISIBLE);
+
+                tvYouAte.setVisibility(View.VISIBLE);
+                for (int i=0; i<player.getHotDogsEaten(); i++) {
+                    ivHotDogs[i].setVisibility(View.VISIBLE);
+                }
+                tvHotDogs.setVisibility(View.VISIBLE);
+
+
+                btnNext.setText("Play again?");
+
+                btnNext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        createPlayer();
+                    }
+                });
+            }
+        });
 
         /*
         if (player.getCaloriesConsumed() >= player.getMaxCaloriesConsumed())

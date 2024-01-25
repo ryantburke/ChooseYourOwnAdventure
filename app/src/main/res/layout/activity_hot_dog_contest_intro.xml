@@ -105,6 +105,7 @@
         android:ems="10"
         android:inputType="text"
         android:hint="Enter name"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/tv_prompt" />
