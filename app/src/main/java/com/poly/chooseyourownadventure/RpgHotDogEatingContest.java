@@ -1,5 +1,6 @@
 package com.poly.chooseyourownadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -239,6 +240,9 @@ public class RpgHotDogEatingContest extends AppCompatActivity {
         tvLoseCondition = findViewById(R.id.tv_lose_condition);
 
         Button btnNext = findViewById(R.id.btn_next);
+        Button btnPlayAgain = findViewById(R.id.btn_playAgain);
+
+        btnPlayAgain.setVisibility(View.INVISIBLE);
 
         //turn off hot dogs
         for (ImageView img:ivHotDogs) {
@@ -268,9 +272,17 @@ public class RpgHotDogEatingContest extends AppCompatActivity {
                 tvHotDogs.setVisibility(View.VISIBLE);
 
 
-                btnNext.setText("Play again?");
+                btnNext.setText("Main Menu");
 
                 btnNext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(RpgHotDogEatingContest.this, MainActivity.class));
+                    }
+                });
+
+                btnPlayAgain.setVisibility(View.VISIBLE);
+                btnPlayAgain.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         createPlayer();

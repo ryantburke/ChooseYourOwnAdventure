@@ -1,5 +1,6 @@
 package com.poly.chooseyourownadventure;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -462,22 +463,14 @@ public class AdventureLaborDay extends AppCompatActivity {
         else
         {
             tvStoryText.setText("High school is over. Permenant Game over.");
+            btn1.setText("Back to menu");
 
             ivStory.setImageResource(R.drawable.im_high_school_over);
 
             btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tvStoryText.setText("Just kidding! Play again?");
-
-                    btn1.setText("Of course!");
-
-                    btn1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            start();
-                        }
-                    });
+                    startActivity(new Intent(AdventureLaborDay.this, MainActivity.class));
                 }
             });
         }
